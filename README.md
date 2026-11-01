@@ -9,7 +9,7 @@
 
 Building things, exploring technologies, and turning ideas into reality.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit_My_Website-0A66C2?style=for-the-badge&logo=vercel&logoColor=white)](https://your-portfolio-link.vercel.app/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-In_Progress-orange?style=for-the-badge&logo=vercel&logoColor=white)](#)
 [![GitHub](https://img.shields.io/badge/GitHub-dukreal-181717?style=for-the-badge&logo=github)](https://github.com/dukreal)
 
 </div>
