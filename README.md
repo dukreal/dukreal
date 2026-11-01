@@ -5,9 +5,9 @@
 
 # Hey, I'm Prince Joseph Magdadaro!
 
-### IT Student | Developer | Tech Enthusiast
+### Information Systems Student @ University of San Carlos
 
-Building things, exploring technologies, and turning ideas into reality.
+Exploring technology, building applications, and turning ideas into reality.
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-In_Progress-orange?style=for-the-badge&logo=vercel&logoColor=white)](#)
 [![GitHub](https://img.shields.io/badge/GitHub-dukreal-181717?style=for-the-badge&logo=github)](https://github.com/dukreal)
@@ -20,12 +20,14 @@ Building things, exploring technologies, and turning ideas into reality.
 
 ## About Me
 
-Hi! I'm **Prince Joseph**, an IT student from the Philippines who enjoys developing applications, exploring new technologies, and working on creative tech projects.
+Hi! I'm **Prince Joseph**, an Information Systems student at the **University of San Carlos**, Philippines.
 
-- Currently exploring web and software development.
-- Interested in frontend development, UI/UX, and application development.
-- Experienced in esports broadcasting and production technology.
-- Always willing to learn, experiment, and improve my skills.
+I'm interested in exploring how technology can solve real-world problems through software development, information systems, and creative technical solutions.
+
+- Currently learning and exploring application development.
+- Interested in web development, UI/UX, and information systems.
+- Involved in esports production, live broadcasting, and tournament operations.
+- Always looking for opportunities to learn, experiment, and improve.
 
 ---
 
@@ -79,13 +81,14 @@ Tools and platforms I use for development, collaboration, design, and production
 
 ---
 
-<!-- ==================== INTERESTS ==================== -->
+<!-- ==================== AREAS OF INTEREST ==================== -->
 
 ## Areas of Interest
 
 - **Web Development** - Building responsive and functional web applications.
+- **Information Systems** - Understanding how technology, people, and processes work together.
 - **Software Development** - Exploring programming concepts and application architecture.
-- **UI/UX Design** - Creating clean and user-friendly interfaces.
+- **UI/UX Design** - Creating clean, accessible, and user-friendly interfaces.
 - **Esports Production** - Working with live broadcasts, overlays, and tournament operations.
 - **Automation** - Connecting tools and creating efficient workflows.
 
