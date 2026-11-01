@@ -154,15 +154,13 @@ Most developers never have to ship something that goes live in front of an audie
 <div align="center">
 
 <img height="190" src="https://raw.githubusercontent.com/dukreal/dukreal/main/profile-summary-card-output/stats-card.svg" alt="GitHub stats" />
-<img height="190" src="https://raw.githubusercontent.com/dukreal/dukreal/main/profile-summary-card-output/tokyonight/2-most-commit-language.svg" alt="Most used languages" />
+<img height="190" src="https://raw.githubusercontent.com/dukreal/dukreal/main/profile-summary-card-output/languages-card.svg" alt="Top languages" />
 
 <br/>
 
 <img src="https://streak-stats.demolab.com?user=dukreal&theme=tokyonight&hide_border=true" />
 
 <br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=dukreal&theme=tokyo-night&hide_border=true&area=true" width="95%" />
 
 </div>
 
