@@ -194,8 +194,8 @@ Want to collaborate, talk projects, or ask how I got into broadcasting? My inbox
 
 ### Thanks for stopping by!
 
-**Fun fact:** [Add something personal here: your favorite game, a go-to energy drink, a broadcast horror story.]
+**Fun fact:** A fun fact!
 
-<sub>Built with curiosity, caffeine, and a lot of scene transitions.</sub>
+<sub>Built with curiosity, caffeine (I don't coffee alot), and a lot of scene transitions.</sub>
 
 </div>
