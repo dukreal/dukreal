@@ -1,5 +1,7 @@
 
-<!-- ==================== HEADER ==================== -->
+<!-- ===================================================== -->
+<!--                      HEADER                           -->
+<!-- ===================================================== -->
 
 <div align="center">
 
@@ -9,14 +11,18 @@
 
 Exploring technology, building applications, and turning ideas into reality.
 
+<br/>
+
 [![Portfolio](https://img.shields.io/badge/Portfolio-In_Progress-orange?style=for-the-badge&logo=vercel&logoColor=white)](#)
-[![GitHub](https://img.shields.io/badge/GitHub-dukreal-181717?style=for-the-badge&logo=github)](https://github.com/dukreal)
+[![GitHub](https://img.shields.io/badge/GitHub-dukreal-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dukreal)
 
 </div>
 
 ---
 
-<!-- ==================== ABOUT ME ==================== -->
+<!-- ===================================================== -->
+<!--                      ABOUT ME                         -->
+<!-- ===================================================== -->
 
 ## About Me
 
@@ -31,7 +37,9 @@ I'm interested in exploring how technology can solve real-world problems through
 
 ---
 
-<!-- ==================== TECH STACK ==================== -->
+<!-- ===================================================== -->
+<!--                      TECH STACK                       -->
+<!-- ===================================================== -->
 
 ## Tech Stack
 
@@ -81,7 +89,9 @@ Tools and platforms I use for development, collaboration, design, and production
 
 ---
 
-<!-- ==================== AREAS OF INTEREST ==================== -->
+<!-- ===================================================== -->
+<!--                   AREAS OF INTEREST                   -->
+<!-- ===================================================== -->
 
 ## Areas of Interest
 
@@ -94,7 +104,9 @@ Tools and platforms I use for development, collaboration, design, and production
 
 ---
 
-<!-- ==================== GITHUB STATISTICS ==================== -->
+<!-- ===================================================== -->
+<!--                   GITHUB STATISTICS                   -->
+<!-- ===================================================== -->
 
 ## GitHub Statistics
 
@@ -114,7 +126,29 @@ Tools and platforms I use for development, collaboration, design, and production
 
 ---
 
-<!-- ==================== FOOTER ==================== -->
+<!-- ===================================================== -->
+<!--                   CONNECT WITH ME                     -->
+<!-- ===================================================== -->
+
+## Connect With Me
+
+Interested in collaborating, discussing projects, or just having a conversation? Feel free to reach out!
+
+<div align="center">
+
+[![Instagram](https://img.shields.io/badge/Instagram-@dukdakdok-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/dukdakdok/)
+
+[![Facebook](https://img.shields.io/badge/Facebook-Prince_Joseph-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/princejoseph.1112/)
+
+[![Gmail](https://img.shields.io/badge/Gmail-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:princejosephmagdadaro@gmail.com)
+
+</div>
+
+---
+
+<!-- ===================================================== -->
+<!--                       FOOTER                          -->
+<!-- ===================================================== -->
 
 <div align="center">
 
@@ -123,6 +157,8 @@ Tools and platforms I use for development, collaboration, design, and production
 Feel free to explore my repositories and check out what I'm working on.
 
 **Keep learning. Keep building. Keep moving forward.**
+
+<br/>
 
 ![Profile Views](https://komarev.com/ghpvc/?username=dukreal&color=blueviolet&style=flat-square&label=Profile+Views)
 
