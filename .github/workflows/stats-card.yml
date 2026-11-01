@@ -13,14 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch stats and build card
+      - name: Fetch stats and build cards
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LOGIN: ${{ github.repository_owner }}
         run: |
           export YEAR=$(date -u +%Y)
           gh api graphql \
-            -f query='query($login:String!,$from:DateTime!){user(login:$login){followers{totalCount} issues{totalCount} pullRequests{totalCount} repositories(ownerAffiliations:OWNER,isFork:false,first:100){totalCount nodes{stargazerCount}} contributionsCollection(from:$from){totalCommitContributions restrictedContributionsCount}}}' \
+            -f query='query($login:String!,$from:DateTime!){user(login:$login){followers{totalCount} issues{totalCount} pullRequests{totalCount} repositories(ownerAffiliations:OWNER,isFork:false,first:100){totalCount nodes{stargazerCount languages(first:10,orderBy:{field:SIZE,direction:DESC}){edges{size node{name color}}}}} contributionsCollection(from:$from){totalCommitContributions restrictedContributionsCount}}}' \
             -f login="$LOGIN" -f from="${YEAR}-01-01T00:00:00Z" > data.json
           python3 - <<'PY'
           import json, os, html
@@ -68,12 +68,46 @@ jobs:
           </svg>"""
           os.makedirs("profile-summary-card-output", exist_ok=True)
           open("profile-summary-card-output/stats-card.svg", "w").write(svg)
+
+
+          # ---------- Top languages card ----------
+          from collections import defaultdict
+          tot = defaultdict(int)
+          col = {}
+          for repo in d["repositories"]["nodes"]:
+              for e in repo["languages"]["edges"]:
+                  tot[e["node"]["name"]] += e["size"]
+                  col[e["node"]["name"]] = e["node"]["color"] or "#70a5fd"
+          top = sorted(tot.items(), key=lambda kv: -kv[1])[:6]
+          total = sum(tot.values()) or 1
+          lrows = []
+          for i, (name, size) in enumerate(top):
+              y = 62 + i * 26
+              pct = size / total * 100
+              w = max(3, round(pct / 100 * 180))
+              lrows.append(
+                f'<text x="28" y="{y}" class="l">{html.escape(name)}</text>'
+                f'<rect x="150" y="{y-9}" width="180" height="8" rx="4" fill="#2f334d"/>'
+                f'<rect x="150" y="{y-9}" width="{w}" height="8" rx="4" fill="{col[name]}"/>'
+                f'<text x="392" y="{y}" class="v" text-anchor="end">{pct:.1f}%</text>'
+              )
+          lsvg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="420" height="{h}" viewBox="0 0 420 {h}" role="img" aria-label="Top languages">
+          <style>
+          .t{{font:600 18px 'Segoe UI',Ubuntu,Sans-Serif;fill:#70a5fd}}
+          .l{{font:400 14px 'Segoe UI',Ubuntu,Sans-Serif;fill:#a9b1d6}}
+          .v{{font:600 14px 'Segoe UI',Ubuntu,Sans-Serif;fill:#38bdae}}
+          </style>
+          <rect width="420" height="{h}" rx="4.5" fill="#1a1b27"/>
+          <text x="28" y="34" class="t">Top Languages</text>
+          {''.join(lrows)}
+          </svg>"""
+          open("profile-summary-card-output/languages-card.svg", "w").write(lsvg)
           PY
           rm data.json
 
-      - name: Commit card
+      - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile-summary-card-output/stats-card.svg
-          git diff --cached --quiet || (git commit -m "Update stats card" && git pull --rebase && git push)
+          git add profile-summary-card-output/stats-card.svg profile-summary-card-output/languages-card.svg
+          git diff --cached --quiet || (git commit -m "Update stats cards" && git pull --rebase && git push)
