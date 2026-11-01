@@ -1,0 +1,79 @@
+name: Stats-Card
+
+on:
+  schedule:
+    - cron: "30 0 * * *" # once a day
+  workflow_dispatch: # lets you run it manually from the Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch stats and build card
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LOGIN: ${{ github.repository_owner }}
+        run: |
+          export YEAR=$(date -u +%Y)
+          gh api graphql \
+            -f query='query($login:String!,$from:DateTime!){user(login:$login){followers{totalCount} issues{totalCount} pullRequests{totalCount} repositories(ownerAffiliations:OWNER,isFork:false,first:100){totalCount nodes{stargazerCount}} contributionsCollection(from:$from){totalCommitContributions restrictedContributionsCount}}}' \
+            -f login="$LOGIN" -f from="${YEAR}-01-01T00:00:00Z" > data.json
+          python3 - <<'PY'
+          import json, os, html
+          d = json.load(open("data.json"))["data"]["user"]
+          year = os.environ["YEAR"]
+          login = html.escape(os.environ["LOGIN"])
+          stars = sum(n["stargazerCount"] for n in d["repositories"]["nodes"])
+          c = d["contributionsCollection"]
+          commits = c["totalCommitContributions"] + c["restrictedContributionsCount"]
+          rows = [
+              ("star",   "Total Stars",          stars),
+              ("commit", f"Commits ({year})",    commits),
+              ("pr",     "Pull Requests",        d["pullRequests"]["totalCount"]),
+              ("issue",  "Issues",               d["issues"]["totalCount"]),
+              ("repo",   "Repositories",         d["repositories"]["totalCount"]),
+              ("people", "Followers",            d["followers"]["totalCount"]),
+          ]
+          ICON = "#bf91f3"
+          icons = {
+           "star":   f'<polygon points="8,1 10,6 15.5,6.3 11.2,9.7 12.7,15 8,12 3.3,15 4.8,9.7 0.5,6.3 6,6" fill="{ICON}" stroke="none"/>',
+           "commit": '<circle cx="8" cy="8" r="3"/><line x1="0.5" y1="8" x2="5" y2="8"/><line x1="11" y1="8" x2="15.5" y2="8"/>',
+           "pr":     '<circle cx="4" cy="3" r="1.8"/><circle cx="4" cy="13" r="1.8"/><circle cx="12" cy="13" r="1.8"/><line x1="4" y1="4.8" x2="4" y2="11.2"/><path d="M12 11.2V6a2 2 0 0 0-2-2H8"/>',
+           "issue":  f'<circle cx="8" cy="8" r="6.5"/><circle cx="8" cy="8" r="1.3" fill="{ICON}" stroke="none"/>',
+           "repo":   '<path d="M3 2.5A1.5 1.5 0 0 1 4.5 1H13v11H4.5A1.5 1.5 0 0 0 3 13.5z"/><path d="M3 13.5A1.5 1.5 0 0 0 4.5 15H13v-3"/>',
+           "people": '<circle cx="8" cy="4.5" r="3"/><path d="M2 15c0-3.3 2.7-5 6-5s6 1.7 6 5"/>',
+          }
+          out = []
+          for i, (key, label, val) in enumerate(rows):
+              y = 62 + i * 26
+              out.append(
+                f'<g transform="translate(28,{y-13})" fill="none" stroke="{ICON}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{icons[key]}</g>'
+                f'<text x="56" y="{y}" class="l">{html.escape(label)}</text>'
+                f'<text x="392" y="{y}" class="v" text-anchor="end">{val:,}</text>'
+              )
+          h = 62 + len(rows) * 26 + 6
+          svg = f"""<svg xmlns="http://www.w3.org/2000/svg" width="420" height="{h}" viewBox="0 0 420 {h}" role="img" aria-label="{login} GitHub stats">
+          <style>
+          .t{{font:600 18px 'Segoe UI',Ubuntu,Sans-Serif;fill:#70a5fd}}
+          .l{{font:400 14px 'Segoe UI',Ubuntu,Sans-Serif;fill:#a9b1d6}}
+          .v{{font:600 14px 'Segoe UI',Ubuntu,Sans-Serif;fill:#38bdae}}
+          </style>
+          <rect width="420" height="{h}" rx="4.5" fill="#1a1b27"/>
+          <text x="28" y="34" class="t">{login}'s GitHub Stats</text>
+          {''.join(out)}
+          </svg>"""
+          os.makedirs("profile-summary-card-output", exist_ok=True)
+          open("profile-summary-card-output/stats-card.svg", "w").write(svg)
+          PY
+          rm data.json
+
+      - name: Commit card
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-summary-card-output/stats-card.svg
+          git diff --cached --quiet || (git commit -m "Update stats card" && git pull --rebase && git push)
