@@ -78,8 +78,8 @@ Most developers never have to ship something that goes live in front of an audie
 
 | Project | What it does | Stack |
 |---|---|---|
-| **[Motra Website](https://github.com/dukreal/Motra-Website)** | Money tracker web app for logging and managing personal finances. In progress. | `React` `Vite` |
-| **[Motra Mobile](https://github.com/dukreal/MobileMoneyTracker-MobDev)** | The mobile version of Motra, built as a cross-platform app. | `React Native` `TypeScript` `Supabase` |
+| **[Montra Website](https://github.com/dukreal/Montra-Website)** | Money tracker web app for logging and managing personal finances. In progress. | `React` `Vite` |
+| **[Montra Mobile](https://github.com/dukreal/MobileMoneyTracker-MobDev)** | The mobile version of Montra, built as a cross-platform app. | `React Native` `TypeScript` `Supabase` |
 | **[La Consolacion](https://github.com/dukreal/La-Consolacion)** | Jewelry shop web application with a database-backed catalog. | `PHP` `SQL` |
 | **MLBB Tournament Overlay** *(private)* | Broadcast overlay and control panel for Mobile Legends tournaments, built for live production use. | `JavaScript` `HTML` `CSS` |
 | **[Portfolio](#)** *(in progress)* | My personal site, a home for everything above. | `Next.js` `Tailwind` |
