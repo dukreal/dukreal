@@ -194,8 +194,8 @@ Want to collaborate, talk projects, or ask how I got into broadcasting? My inbox
 
 ### Thanks for stopping by!
 
-**Fun fact:** A fun fact!
+**Fun fact:** I like matchas!
 
-<sub>Built with curiosity, caffeine (I don't coffee alot), and a lot of scene transitions.</sub>
+<sub>Built with curiosity, caffeine (I don' drink coffee alot), and a lot of scene transitions.</sub>
 
 </div>
